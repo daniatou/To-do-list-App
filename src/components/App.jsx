@@ -5,13 +5,13 @@ import Main from './Main';
 
 
 
-class App extends Component{
-  render(){
-    return(
+class App extends Component {
+  render() {
+    return (
       <div className="container-fluid">
         <Main />
       </div>
-      
+
     )
   }
 
