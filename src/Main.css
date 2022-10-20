@@ -1,3 +1,25 @@
-input{
-    outline: none;
+.input-task {
+    position: relative;
+}
+
+.tag-icon {
+    position: absolute;
+    left: 10px;
+    top: 20%;
+}
+
+.form-control{
+    border: 1px solid black;
+    width: 75%;
+}
+
+.list-group {
+    --bs-list-group-bg: rgb(107,167,178);
+
+}
+
+.btn-primary{
+    background-color: rgb(107,167,178);
+    width: 20%;
+    border: 1px solid black;
 }
