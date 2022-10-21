@@ -12,7 +12,7 @@ class Main extends Component {
                     <h3 className='text-start'>Todo list <i class="bi bi-tag"></i></h3>
                     <hr />
                     <ul class="list-group">
-                        <li class="list-group-item  d-flex justify-content-between ">
+                        <li class="list-group-item  d-flex justify-content-between text-white ">
                             <button className='btn btn-sm  btn-outline-success'>
                                 &#x2713;
                             </button>
@@ -21,7 +21,7 @@ class Main extends Component {
                                 &#128465;
                             </button>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between">
+                        <li class="list-group-item d-flex justify-content-between text-white">
                             <button className='btn btn-sm btn-outline-success'>
                                 &#x2713;
                             </button>
@@ -30,7 +30,7 @@ class Main extends Component {
                                 &#128465;
                             </button>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between">
+                        <li class="list-group-item d-flex justify-content-between text-white">
                             <button className='btn btn-sm  btn-outline-success'>
                                 &#x2713;
                             </button>
@@ -39,7 +39,7 @@ class Main extends Component {
                                 &#128465;
                             </button>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between">
+                        <li class="list-group-item d-flex justify-content-between text-white">
                             <button className='btn btn-sm  btn-outline-success'>
                                 &#x2713;
                             </button>
