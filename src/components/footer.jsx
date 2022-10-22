@@ -14,19 +14,19 @@ class Footer extends Component {
                 <div className="btn-group">
                     <button className='btn btn-outline-dark bg-light'>
                         <NavLink to='/'>
-                            <i class="bi bi-list-task"></i>
+                            <i className="bi bi-list-task"></i>
                         </NavLink>
                     </button>
                     <button className='btn btn-outline-dark bg-light'>
                         <NavLink to='/completed'>
-                             <i class="bi bi-check-square"></i>
+                             <i className="bi bi-check-square"></i>
                         </NavLink>
                     </button>
-                    <button className='btn btn-outline-dark bg-light'><i class="bi bi-trash"></i></button>
+                    <button className='btn btn-outline-dark bg-light'><i className="bi bi-trash"></i></button>
                 </div>
                 <button className='btn btn-outline-dark bg-light'>
                     <NavLink to='/add-task'>
-                         <i class="bi bi-plus-square"></i>
+                         <i className="bi bi-plus-square"></i>
                     </NavLink>
                 </button>
             </footer>

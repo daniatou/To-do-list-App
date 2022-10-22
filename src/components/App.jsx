@@ -15,10 +15,11 @@ class App extends Component {
         
         <BrowserRouter>
           <Routes>
-             {/* <Route  path='/' element={<Main />}  /> */}
+             <Route  path='/' element={<Main tasks={initialData} />} />
              {/* <Route  path='/*' element={<Main />}  /> */}
-             <Route path="/" element={<Main tasks={initialData} />} />
-             <Route  path='/add-task'  element={[<AddTask />, <Main />]}  />
+             <Route path='/:id' element={<Main tasks={initialData} />} />
+             <Route  path='/add-task'  element={<AddTask />}  />
+             {/* <Route  path='/add-task'  element={[<AddTask />, <Main />]}  /> */}
           </Routes>
           <Footer />
         </BrowserRouter>
