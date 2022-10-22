@@ -4,6 +4,7 @@ import Main from './Main';
 import Footer from './footer'
 import AddTask from './AddTask';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import initialData from '../initialData';
 
 
 
@@ -14,8 +15,9 @@ class App extends Component {
         
         <BrowserRouter>
           <Routes>
-             <Route  path='/' element={<Main />}  />
-             <Route  path='/*' element={<Main />}  />
+             {/* <Route  path='/' element={<Main />}  /> */}
+             {/* <Route  path='/*' element={<Main />}  /> */}
+             <Route path="/" element={<Main tasks={initialData} />} />
              <Route  path='/add-task'  element={[<AddTask />, <Main />]}  />
           </Routes>
           <Footer />

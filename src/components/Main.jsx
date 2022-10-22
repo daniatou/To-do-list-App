@@ -1,62 +1,23 @@
-import { React, Component } from 'react';
+import { React } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './Main.css'
+import Todo from './Todo';
 
 
-class Main extends Component {
-    render() {
-        return (
+const Main =({tasks}) => (
             <main className=''>
                 <div className="container">
                     <h3 className='text-start'>Todo list <i class="bi bi-tag"></i></h3>
                     <hr />
                     <ul class="list-group">
-                        <li class="list-group-item  d-flex justify-content-between text-white ">
-                            <button className='btn btn-sm  btn-outline-success'>
-                                &#x2713;
-                            </button>
-                            Cras justo odio
-                            <button className='btn btn-sm  btn-outline-danger float-end'>
-                                &#128465;
-                            </button>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between text-white">
-                            <button className='btn btn-sm btn-outline-success'>
-                                &#x2713;
-                            </button>
-                            Dapibus ac facilisis in
-                            <button className='btn btn-sm  btn-outline-danger '>
-                                &#128465;
-                            </button>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between text-white">
-                            <button className='btn btn-sm  btn-outline-success'>
-                                &#x2713;
-                            </button>
-                            Morbi leo risus
-                            <button className='btn btn-sm  btn-outline-danger '>
-                                &#128465;
-                            </button>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between text-white">
-                            <button className='btn btn-sm  btn-outline-success'>
-                                &#x2713;
-                            </button>
-                            Porta ac consectetur ac
-
-                            <button className='btn btn-sm  btn-outline-danger '>
-                                &#128465;
-                            </button>
-                        </li>
-
+                        {
+                            tasks?.map((task) => <Todo task={task} key = {task.id} />)
+                        }
                     </ul>
-
                 </div>
-
             </main>
         )
-    }
-}
+ 
 
 export default Main;
