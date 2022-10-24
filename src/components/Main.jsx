@@ -28,7 +28,7 @@ const Main =({tasks, onToggleCompleted}) => {
                     <h3 className='text-start'>Todo list <i className="bi bi-tag"></i></h3>
                     <hr />
                     <ul className="list-group">
-                        <li className='list-group-item bg-light'>Aucune tâche planifiée.</li>
+                        <li className='list-group-item bg-light'>Aucune tâche Complétée.</li>
                     </ul>
                 </div>
             </main>

@@ -1,14 +1,15 @@
-import { React, Component } from 'react';
+import { React } from 'react';
 import { NavLink } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 
 
 
-class Footer extends Component {
+
+const Footer = ({onDeletedCompleted}) => {
     // const params= useParams();
     // console.log(paams);
 
-    render() {
+   
         return (
             <footer className='container d-flex bg-secondary my-3 p-3 justify-content-between'>
                 <div className="btn-group">
@@ -22,7 +23,7 @@ class Footer extends Component {
                              <i className="bi bi-check-square"></i>
                         </NavLink>
                     </button>
-                    <button className='btn btn-outline-dark bg-light'><i className="bi bi-trash"></i></button>
+                    <button className='btn btn-outline-dark bg-light' onClick = {onDeletedCompleted}><i className="bi bi-trash"></i></button>
                 </div>
                 <button className='btn btn-outline-dark bg-light'>
                     <NavLink to='/add-task'>
@@ -32,6 +33,6 @@ class Footer extends Component {
             </footer>
         )
     }
-}
+
 
 export default Footer;

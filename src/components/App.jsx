@@ -38,6 +38,15 @@ class App extends Component {
     }))
   }
 
+  onDeletedCompleted = () =>{
+    this.setState(prevState =>{
+        let newState = prevState.tasks.filter(task => !task.completed)
+        return {
+            tasks : newState
+        }
+    })
+}
+
   render() {
     return (
       <div className="container-fluid">
@@ -50,7 +59,7 @@ class App extends Component {
              <Route  path='/add-task'  element={<AddTask  onAddTask= {this.onAddTask}/>}   />
              {/* <Route  path='/add-task'  element={[<AddTask />, <Main />]}  /> */}
           </Routes>
-          <Footer />
+          <Footer onDeletedCompleted ={this.onDeletedCompleted} />
         </BrowserRouter>
       </div>
 
