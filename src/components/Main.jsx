@@ -7,21 +7,50 @@ import { useParams } from 'react-router-dom';
 
 
 const Main =({tasks}) => {
-    let filteredTask =useParams();
-    console.log(filteredTask)
-    return(
-        <main className=''>
-            <div className="container">
-                <h3 className='text-start'>Todo list <i className="bi bi-tag"></i></h3>
-                <hr />
-                <ul className="list-group">
-                    {
-                        tasks?.map((task) => <Todo task={task} key = {task.id} />)
-                    }
-                </ul>
-            </div>
-        </main>
-    )
+    let filteredTask
+    let { id } = useParams();
+    // console.log({ id });
+    for (const [key, value] of Object.entries({ id })) {
+        console.log(`${key}: ${value}`);
+    switch (`${value}`) {
+        case 'completed':
+            filteredTask = tasks.filter(task => task.completed)
+        break;
+        default:
+            filteredTask = tasks;
+            break;
+    }
+}
+    if(filteredTask.length ===0){
+        return(
+            <main className=''>
+                <div className="container">
+                    <h3 className='text-start'>Todo list <i className="bi bi-tag"></i></h3>
+                    <hr />
+                    <ul className="list-group">
+                        <li className='list-group-item'>Aucune tâche planifiée.</li>
+                    </ul>
+                </div>
+            </main>
+        )
+
+    } else{
+
+        return(
+            <main className=''>
+                <div className="container">
+                    <h3 className='text-start'>Todo list <i className="bi bi-tag"></i></h3>
+                    <hr />
+                    <ul className="list-group">
+                        {
+                            filteredTask?.map((task) => <Todo task={task} key = {task.id} />)
+                        }
+                    </ul>
+                </div>
+            </main>
+        )
+    }
+
 }
         
  
