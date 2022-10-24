@@ -5,6 +5,7 @@ import Footer from './footer'
 import AddTask from './AddTask';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import initialData from '../initialData';
+import uniqueId  from 'uniqueid';
 
 
 
@@ -25,6 +26,18 @@ class App extends Component {
     ))
   }
 
+  onAddTask = (newTaskName) => {
+    let newTask = {
+      id : uniqueId(),
+      name : newTaskName,
+      completed: false
+    }
+
+    this.setState(prevState => ({
+      tasks : [...prevState.tasks, newTask]
+    }))
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -34,7 +47,7 @@ class App extends Component {
              <Route  path='/' element={<Main tasks={this.state.tasks} onToggleCompleted ={this.onToggleCompleted} />} />
              {/* <Route  path='/*' element={<Main />}  /> */}
              <Route path='/:id' element={<Main tasks={this.state.tasks} onToggleCompleted ={this.onToggleCompleted} />} />
-             <Route  path='/add-task'  element={<AddTask />}   />
+             <Route  path='/add-task'  element={<AddTask  onAddTask= {this.onAddTask}/>}   />
              {/* <Route  path='/add-task'  element={[<AddTask />, <Main />]}  /> */}
           </Routes>
           <Footer />
