@@ -6,7 +6,7 @@ import Todo from './Todo';
 import { useParams } from 'react-router-dom';
 
 
-const Main =({tasks}) => {
+const Main =({tasks, onToggleCompleted}) => {
     let filteredTask
     let { id } = useParams();
     // console.log({ id });
@@ -28,7 +28,7 @@ const Main =({tasks}) => {
                     <h3 className='text-start'>Todo list <i className="bi bi-tag"></i></h3>
                     <hr />
                     <ul className="list-group">
-                        <li className='list-group-item'>Aucune tâche planifiée.</li>
+                        <li className='list-group-item bg-light'>Aucune tâche planifiée.</li>
                     </ul>
                 </div>
             </main>
@@ -43,7 +43,7 @@ const Main =({tasks}) => {
                     <hr />
                     <ul className="list-group">
                         {
-                            filteredTask?.map((task) => <Todo task={task} key = {task.id} />)
+                            filteredTask?.map((task) => <Todo task={task} key = {task.id} onToggleCompleted= {onToggleCompleted} />)
                         }
                     </ul>
                 </div>
