@@ -3,16 +3,30 @@ import './App.css';
 import Main from './Main';
 import Footer from './footer'
 import AddTask from './AddTask';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import initialData from '../initialData';
-import uniqueId  from 'uniqueid';
+import uniqueId from 'uniqueid';
+import Fetching from './Fetching';
 
 
 
 class App extends Component {
 
   state = {
-    tasks : initialData
+    tasks: [],
+    fetching: true
+  }
+
+  componentDidMount = () => {
+    let delay = Math.floor(Math.random() * 5000)
+
+    setTimeout(() => {
+      this.setState({
+        fetching: false,
+        tasks: initialData
+      })
+    }
+      , delay)
   }
 
   onToggleCompleted = (taskId) => {
@@ -20,46 +34,48 @@ class App extends Component {
     taskToUpdate.completed = !taskToUpdate.completed;
     this.setState(prevState => (
       prevState.tasks.map(task => {
-       return  task.id === taskId ? taskToUpdate : task 
-      } )
-       
+        return task.id === taskId ? taskToUpdate : task
+      })
+
     ))
   }
 
   onAddTask = (newTaskName) => {
     let newTask = {
-      id : uniqueId(),
-      name : newTaskName,
+      id: uniqueId(),
+      name: newTaskName,
       completed: false
     }
 
     this.setState(prevState => ({
-      tasks : [...prevState.tasks, newTask]
+      tasks: [...prevState.tasks, newTask]
     }))
   }
 
-  onDeletedCompleted = () =>{
-    this.setState(prevState =>{
-        let newState = prevState.tasks.filter(task => !task.completed)
-        return {
-            tasks : newState
-        }
+  onDeletedCompleted = () => {
+    this.setState(prevState => {
+      let newState = prevState.tasks.filter(task => !task.completed)
+      return {
+        tasks: newState
+      }
     })
-}
+  }
 
   render() {
+
+
     return (
       <div className="container-fluid">
-        
+        {this.state.fetching ? <Fetching /> : null}
         <BrowserRouter>
           <Routes>
-             <Route  path='/' element={<Main tasks={this.state.tasks} onToggleCompleted ={this.onToggleCompleted} />} />
-             {/* <Route  path='/*' element={<Main />}  /> */}
-             <Route path='/:id' element={<Main tasks={this.state.tasks} onToggleCompleted ={this.onToggleCompleted} />} />
-             <Route  path='/add-task'  element={<AddTask  onAddTask= {this.onAddTask}/>}   />
-             {/* <Route  path='/add-task'  element={[<AddTask />, <Main />]}  /> */}
+            <Route path='/' element={<Main tasks={this.state.tasks} onToggleCompleted={this.onToggleCompleted} />} />
+            {/* <Route  path='/*' element={<Main />}  /> */}
+            <Route path='/:id' element={<Main tasks={this.state.tasks} onToggleCompleted={this.onToggleCompleted} />} />
+            <Route path='/add-task' element={<AddTask onAddTask={this.onAddTask} />} />
+            {/* <Route  path='/add-task'  element={[<AddTask />, <Main />]}  /> */}
           </Routes>
-          <Footer onDeletedCompleted ={this.onDeletedCompleted} />
+          <Footer onDeletedCompleted={this.onDeletedCompleted} />
         </BrowserRouter>
       </div>
 
